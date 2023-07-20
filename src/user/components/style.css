@@ -1,0 +1,39 @@
+.side{
+    padding: 10px;
+    border-radius: 10px;
+    width: 25vw;
+    height: 100vh;
+    background-color: lightslategray;
+}
+
+.card{
+    width: 200px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 7px;
+    display: flex;
+    margin-left: 10px;
+    box-shadow: 0 0 5px grey;
+}
+.card-grp{
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    background-color: antiquewhite;
+    box-shadow: 0 0 5px grey;
+    cursor: pointer;
+    padding: 30px;
+}
+.card-grp:hover{
+    background-color: brown;
+    font-size: 20px;
+}
+.serv{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: -50px;
+    align-items: center;
+}

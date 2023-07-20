@@ -1,0 +1,7 @@
+.gridCon{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    background-color: rgb(218, 221, 223);
+    margin: 10px;
+    border-radius: 10px;
+}
