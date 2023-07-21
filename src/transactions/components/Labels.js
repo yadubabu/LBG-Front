@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
+
 import "./label.css";
-// import { getObjects } from "../../redux/actions/objActions";
+
 import { useSelector, useDispatch } from "react-redux";
+import Percent from "./Percent";
 
 export default function Labels() {
-  const dispatch = useDispatch();
   const object = useSelector((state) => state.objects);
-  console.log(object.objects);
   return (
     <>
       {object.objects.map((val, i) => {
@@ -22,8 +22,13 @@ export default function Labels() {
 }
 
 const LabelComponent = ({ data }) => {
-  const tot = useSelector((state) => state.totBalance.totBalance);
-
+  const percent = useSelector((state) => state);
+  console.log(percent.percent);
+  // const checkPercent = (data) => {
+  //   if (data === "Savings") {
+  //     alert("hai");
+  //   }
+  // };
   if (!data) return <></>;
   return (
     <div className="label gap-2">
@@ -31,8 +36,10 @@ const LabelComponent = ({ data }) => {
         className="bar"
         style={{ background: data.color ?? "#f9c74f" }}
       ></div>
-      <h6 className="text">{data.type}</h6>
-      <h5 className="font-bold">{}%</h5>
+      <h6 className="text" id={data.type}>
+        {data.type}
+      </h6>
+      {/* <h5 className="font-bold">{checkPercent(data.type)}</h5> */}
       <div></div>
     </div>
   );

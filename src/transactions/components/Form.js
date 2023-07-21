@@ -3,23 +3,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./form.css";
 import List from "./List";
-import { api } from "../api";
-import { useSelector, useDispatch } from "react-redux";
-import { getBalance } from "../../redux/actions/getBalance";
-const Form = () => {
-  const [totals, setTotals] = useState();
-  const dispatch = useDispatch();
-  const { register, handleSubmit, resetField } = useForm();
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/getbalance/balance")
-      .then((res) => setTotals(res.data))
-      .catch((err) => console.log(err));
-  }, [totals]);
-  if (totals !== "") {
-    dispatch(getBalance(totals));
-  }
+const Form = () => {
+  const { register, handleSubmit, resetField } = useForm();
 
   const submitTrans = async (data) => {
     await axios
@@ -30,7 +16,6 @@ const Form = () => {
         date: data.date,
       })
       .then((res) => console.log(res.data))
-
       .catch((err) => console.log(err));
   };
 

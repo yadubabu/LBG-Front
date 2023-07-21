@@ -1,29 +1,34 @@
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+
 const initialValue = {
-  totalAmount: 10000,
-  percent: 100,
   objects: [
     {
       type: "Savings",
       color: "rgb(255, 99, 132)",
-      percent: 0,
+      percent: "",
     },
     {
       type: "Investment",
       color: "rgb(54, 162, 235)",
-      percent: 0,
+      percent: "",
     },
     {
       type: "Expenses",
       color: "rgb(255, 205, 86)",
-      percent: 0,
+      percent: "",
     },
   ],
 };
 export const objReducer = (state = initialValue, { type, payload }) => {
   switch (type) {
-    case "ALL_TYPES":
-      return state;
-
+    case "SAVINGS":
+      return {
+        objects: {
+          type: "Savings",
+          color: "rgb(255, 99, 132)",
+          percent: payload,
+        },
+      };
     default:
       return state;
   }

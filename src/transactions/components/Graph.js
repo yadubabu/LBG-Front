@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 import Labels from "./Labels";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./graph.css";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
@@ -29,13 +29,14 @@ const config = {
   },
 };
 const Graph = () => {
-  const tot = useSelector((state) => state.totBalance.totBalance);
-  console.log(tot);
+  const bal = useSelector((state) => state);
+  // console.log(bal);
   return (
     <div className="flex justify-content max-w-xs-mx-auto">
       <span>
-        Account Balance-{tot[0].totAmount}
         <CurrencyRupeeIcon style={{ fontSize: "15px" }} />
+        {/* {bal[0].totAmount} */}
+        {/* {bal} */}
       </span>
       <div className="item">
         <div className="chart relative">

@@ -1,17 +1,24 @@
 import { actionTypes } from "../actionTypes";
 
-export const getObjects = () => {
+// export const getObjects = () => {
+//   return {
+//     type: "ALL_TYPES",
+//   };
+// };
+export const savingPercent = (percent) => {
   return {
-    type: "ALL_TYPES",
+    type: "SAVINGS",
+    payload: percent,
   };
 };
-export const getPercent = (obj) => {
-  let val = obj.type.toUpperCase();
-  return {
-    type: `${val}`,
-    payload: obj.amount,
-  };
-};
+
+// export const getPercent = (obj) => {
+//   let val = obj.type.toUpperCase();
+//   return {
+//     type: `${val}`,
+//     payload: obj.amount,
+//   };
+// };
 // export const getSavings = (objType) => {
 //   console.log(objType);
 //   return {

@@ -1,21 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./style.css";
+import { setAuth } from "../../redux/actions/setAuth";
+import axios from "axios";
+import { percentActions } from "../../redux/actions/percentActions";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import Transactions from "../../transactions/pages/Transactions";
 
-const Main = () => {
-  // const tot = useSelector((state) => state.totBalance.totBalance);
+const Main = ({ name }) => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state);
+  console.log(data.percent);
+  const bal = useSelector((state) => state.balance[0]);
+  useEffect(() => {
+    if (name) {
+      if (bal) {
+        dispatch(percentActions(bal[0].totAmount));
+      }
+    }
+  }, [bal]);
   const openTrans = () => {
     window.location.href = "/trans";
   };
+
   return (
     <div className="gridCards">
       <div className="card">
         <span>
-          {/* Account Balance-{tot[0].totAmount} */}
+          Total Balance:
           <CurrencyRupeeIcon style={{ fontSize: "15px" }} />
-          {/* {tot} */}
+          {bal.totAmount}
         </span>
       </div>
       <div className="serv">

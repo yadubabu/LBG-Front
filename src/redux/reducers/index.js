@@ -1,14 +1,14 @@
 import { combineReducers } from "redux";
 import { objReducer } from "./objReducer";
 import balanceReducer from "./balanceReducer";
+import percentReducer from "./percentReducer";
+import authReducer from "./authReducer";
 
 const reducers = combineReducers({
-  // val: 100,
-  // total: totalBal,
-  // color: colorReducer,
   objects: objReducer,
-  // percent: savingsReducer,
-  totBalance: balanceReducer,
+  balance: balanceReducer,
+  percent: percentReducer,
+  auth: authReducer,
 });
 
 export default reducers;
