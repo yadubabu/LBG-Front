@@ -1,14 +1,10 @@
 import { combineReducers } from "redux";
-import { objReducer } from "./objReducer";
-import balanceReducer from "./balanceReducer";
-import percentReducer from "./percentReducer";
-import authReducer from "./authReducer";
+import totalReducer from "./totalReducer";
+import setObjReducer from "./setObjReducer";
 
 const reducers = combineReducers({
-  objects: objReducer,
-  balance: balanceReducer,
-  percent: percentReducer,
-  auth: authReducer,
+  totals: totalReducer,
+  objects: setObjReducer,
 });
 
 export default reducers;

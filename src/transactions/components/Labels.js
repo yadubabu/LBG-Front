@@ -1,15 +1,50 @@
 import React, { useEffect } from "react";
-
 import "./label.css";
-
+import axios from "axios";
+import { totalActions } from "../../redux/actions/totalAction";
 import { useSelector, useDispatch } from "react-redux";
-import Percent from "./Percent";
+import { setObjActions } from "../../redux/actions/setObjActions";
 
 export default function Labels() {
-  const object = useSelector((state) => state.objects);
+  const dispatch = useDispatch();
+  const total = useSelector((state) => state.totals.total);
+  console.log(total);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/getbalance/balance/")
+      .then((res) => dispatch(totalActions(res.data)))
+      .catch((err) => console.log(err));
+  }, []);
+  const savingPercent = (total.totSavings * 100) / total.totAmount;
+  const expensePercent = (total.totExpense * 100) / total.totAmount;
+  const investmentPercent = (total.totInvestment * 100) / total.totAmount;
+
+  const objects = [
+    {
+      type: "Savings",
+      color: "rgb(255, 99, 132)",
+      percent: Math.round(savingPercent),
+    },
+    {
+      type: "Investment",
+      color: "rgb(54, 162, 235)",
+      percent: Math.round(expensePercent),
+    },
+    {
+      type: "Expenses",
+      color: "rgb(255, 205, 86)",
+      percent: Math.round(investmentPercent),
+    },
+  ];
+
+  useEffect(() => {
+    // if (savingPercent && expensePercent && investmentPercent) {
+    dispatch(setObjActions(objects));
+    // }
+  }, []);
   return (
     <>
-      {object.objects.map((val, i) => {
+      {objects.map((val, i) => {
         return (
           <div key={i}>
             {" "}
@@ -22,13 +57,6 @@ export default function Labels() {
 }
 
 const LabelComponent = ({ data }) => {
-  const percent = useSelector((state) => state);
-  console.log(percent.percent);
-  // const checkPercent = (data) => {
-  //   if (data === "Savings") {
-  //     alert("hai");
-  //   }
-  // };
   if (!data) return <></>;
   return (
     <div className="label gap-2">
@@ -39,7 +67,7 @@ const LabelComponent = ({ data }) => {
       <h6 className="text" id={data.type}>
         {data.type}
       </h6>
-      {/* <h5 className="font-bold">{checkPercent(data.type)}</h5> */}
+      <h5 className="font-bold">{data.percent}%</h5>
       <div></div>
     </div>
   );

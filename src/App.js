@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -9,7 +9,6 @@ import Dashboard from "./user/pages/Dashboard";
 import Transactions from "./transactions/pages/Transactions";
 import ExpenseTracker from "./transactions/pages/ExpenseTracker";
 import AllTrans from "./transactions/pages/AllTrans";
-
 const App = () => {
   return (
     <div className="App">
@@ -26,6 +25,7 @@ const App = () => {
         </Routes>
       </Router>
     </div>
+    // </AuthContext.Provider>
   );
 };
 

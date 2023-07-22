@@ -5,3 +5,50 @@
     margin: 10px;
     border-radius: 10px;
 }
+.loginCard{
+    width: 300px;
+    height: 180px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 120px;
+    display: flex;
+    flex-direction: column;
+}
+.lab{
+}
+.btn{
+    border: none;
+    background-color: aqua;
+    height: 35px;
+    position: absolute;
+    margin-top: 132px;
+    margin-left: 100px;
+}
+.registerCard h1{
+    color: brown;
+}
+.registerCard{
+    width: 350px;
+    height: 350px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 120px;
+    display: flex;
+    flex-direction: column;
+}
+.registerCard label{
+    margin: 6px;
+    font-weight: 500;
+}
+.regibtn{
+    background-color: rgb(204, 202, 199);
+    border: none;
+    border-radius: 5px;
+    margin-left: 130px;
+    margin-top: 10px;
+    color: brown;
+}

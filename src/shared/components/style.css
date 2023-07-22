@@ -1,0 +1,12 @@
+.card-show{
+    width: 200px;
+    height: 200px;
+    border:1px black solid;
+    /* background-color: gray; */
+    /* opacity: 0.2; */
+   
+}
+.form{
+    position: absolute;
+    z-index: -999;
+}

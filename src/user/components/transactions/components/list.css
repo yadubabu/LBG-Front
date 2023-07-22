@@ -1,0 +1,15 @@
+.list{
+    display: flex;
+    margin-top: 30px;
+}
+
+.box{
+    border-radius: 5px;
+    box-shadow: 0 0 5px gray;
+    display: flex;
+    margin-bottom: -20px;
+}
+.box .del{
+    cursor: pointer;
+    margin-right: 40px;
+}

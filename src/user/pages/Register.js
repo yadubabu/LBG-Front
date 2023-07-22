@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-
+import "./style.css";
 import axios from "axios";
 
 const Register = () => {
-  const [msg, setMsg] = useState();
-
+  const [msg, setMsg] = useState("");
   const { register, handleSubmit, resetField } = useForm();
+  const clearFeilds = () => {
+    resetField();
+  };
   const submitHandler = async (data) => {
+    if (
+      register("name") !== null ||
+      register("email") !== null ||
+      register("password") !== null ||
+      register("confirmpassword") !== null ||
+      register("pancard") !== null ||
+      register("phone") !== null
+    ) {
+      setMsg("All Fields are Mandatory");
+    } else if (register("password") === register("confirmpassword")) {
+      setMsg("Password and ConfirmPassword are not same");
+    }
     await axios
       .post("http://localhost:5000/adduser", {
         name: data.name,
@@ -21,7 +35,7 @@ const Register = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
+    <div className="registerCard">
       <h1>Register</h1>
       {msg ? (
         <h6 style={{ color: "green", textAlign: "center" }}>{msg}</h6>
@@ -47,7 +61,7 @@ const Register = () => {
         <label>Phone</label>
         <input type="number" {...register("phone")} />
         <br />
-        <input type="submit" value="Register" />
+        <input className="regibtn" type="submit" value="Register" />
       </form>
     </div>
   );

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
-
 import axios from "axios";
+import "./style.css";
 import Navbar from "../../components/Navbar";
-import Dashboard from "./Dashboard";
 
-const Login = () => {
+const Login = ({ login, val }) => {
   const [msg, setMsg] = useState();
   const [user, setUser] = useState();
   const { register, handleSubmit, resetField } = useForm();
@@ -27,11 +25,9 @@ const Login = () => {
   return (
     <div>
       <Navbar />
-      <h1>Login</h1>
       {msg === "Login"
         ? setTimeout(() => {
-            window.location.href = `/dashboard/${user.name}`;
-            // <Dashboard user={user} />;
+            window.location.href = `/dashboard/${user}`;
           }, 2000)
         : ""}
       {msg ? (
@@ -39,15 +35,17 @@ const Login = () => {
       ) : (
         ""
       )}
-      <form onSubmit={handleSubmit(submitHandler)}>
-        <label>Email</label>
-        <input type="email" {...register("email")} />
+      <h1 style={{ textAlign: "center" }}>Login</h1>
+
+      <form className="loginCard" onSubmit={handleSubmit(submitHandler)}>
+        <label className="lab">Email</label>
+        <input className="in" type="email" {...register("email")} />
         <br />
-        <label>Password</label>
-        <input type="password" {...register("password")} />
+        <label className="lab">Password</label>
+        <input className="in" type="password" {...register("password")} />
         <br />
 
-        <input type="submit" value="Login" />
+        <input className="btn" type="submit" value="Login" />
       </form>
     </div>
   );
