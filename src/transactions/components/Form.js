@@ -18,7 +18,11 @@ const Form = () => {
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
-
+  useEffect(() => {
+    if (submitTrans) {
+      return;
+    }
+  }, []);
   return (
     <div className="form max-w-sm mx-auto w-96">
       <h3 className="font-bold pb-4 text-xl">Transactions</h3>
