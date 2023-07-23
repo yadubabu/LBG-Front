@@ -21,7 +21,9 @@ const Graph = () => {
     setNewData(data);
   };
   useEffect(() => {
-    getObjects();
+    if (objects) {
+      getObjects();
+    }
   }, [objects]);
   const config = {
     data: {

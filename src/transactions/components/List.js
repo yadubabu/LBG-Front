@@ -64,10 +64,9 @@ function Transactions({ data, setTransactions }) {
     }
   };
   const deleteTrans = async (id) => {
-    console.log(id);
     await axios
       .delete(`http://localhost:5000/delete/deletetrans/${id}`)
-      .then((res) => setTransactions(res.data))
+      .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
   return (

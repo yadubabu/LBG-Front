@@ -8,7 +8,6 @@ import { setObjActions } from "../../redux/actions/setObjActions";
 export default function Labels() {
   const dispatch = useDispatch();
   const total = useSelector((state) => state.totals.total);
-  console.log(total);
   useEffect(() => {
     axios
       .get("http://localhost:5000/getbalance/balance/")
@@ -38,9 +37,7 @@ export default function Labels() {
   ];
 
   useEffect(() => {
-    // if (savingPercent && expensePercent && investmentPercent) {
     dispatch(setObjActions(objects));
-    // }
   }, []);
   return (
     <>

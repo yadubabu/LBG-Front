@@ -4,10 +4,11 @@ const initialValue = {
 
 const setObjReducer = (state = initialValue, { type, payload }) => {
   console.log(payload);
-  if (type === "SET_OBJECTS") {
-    return payload;
-  } else {
-    return state;
+  switch (type) {
+    case "SET_OBJECTS":
+      return payload;
+    default:
+      return state;
   }
 };
 export default setObjReducer;
